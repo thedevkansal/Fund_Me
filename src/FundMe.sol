@@ -28,7 +28,7 @@ contract FundMe {
     // If the sender is not already in the s_funders array, add them to the array
     function fund() public payable {
         require(msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD, "You need to spend more ETH!");
-        
+
         if (s_addressToAmountFunded[msg.sender] == 0) {
             s_funders.push(msg.sender);
         }
@@ -64,7 +64,7 @@ contract FundMe {
         // require(sendSuccess, "Send failed");
 
         // call
-        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool callSuccess,) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
     }
 
@@ -76,6 +76,7 @@ contract FundMe {
     fallback() external payable {
         fund();
     }
+
     receive() external payable {
         fund();
     }
@@ -84,20 +85,24 @@ contract FundMe {
     function getAddressToAmountFunded(address funder) public view returns (uint256) {
         return s_addressToAmountFunded[funder];
     }
+
     function getFunder(uint256 index) public view returns (address) {
         return s_funders[index];
     }
+
     function getOwner() public view returns (address) {
         return i_owner;
     }
+
     function getPriceFeed() public view returns (AggregatorV3Interface) {
         return s_priceFeed;
     }
+
     function getVersion() public view returns (uint256) {
         return s_priceFeed.version();
     }
+
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }
-
 }

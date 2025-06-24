@@ -43,7 +43,7 @@ A decentralized funding contract deployed on the **Sepolia Testnet**, built usin
 ## ⚡️ Quickstart
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/thedevkansal/Fund_Me
 cd fund_me
 forge install
 cp .env.example .env

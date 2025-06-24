@@ -20,7 +20,6 @@ contract FundMeTest is Test {
     }
 
     function testUserInteractions() public {
-
         FundFundMe fundFundMe = new FundFundMe();
         fundFundMe.fundFundMe(address(fundMe));
 
@@ -28,6 +27,5 @@ contract FundMeTest is Test {
         withdrawFundMe.withdrawFundMe(address(fundMe));
 
         assert(address(fundMe).balance == 0);
-
     }
 }
