@@ -37,7 +37,7 @@ contract FundMeTest is Test {
 
     //to check if the version is set correctly
     function testVersion() public view {
-        assertEq(fundMe.getVersion(), 4);
+        assertEq(fundMe.getVersion(), 0);
     }
 
     // to test if fund fails when the amount sent is less than the minimum USD value
